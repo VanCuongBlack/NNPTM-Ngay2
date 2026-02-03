@@ -6,84 +6,24 @@
     <title>Product Management</title>
 </head>
 <body>
-    <h1>Danh sách câu hỏi</h1>
-    <ol>
-        <li>Câu 1: Khai báo constructor function Product để tạo đối tượng sản phẩm.</li>
-        <li>Câu 2: Khởi tạo mảng products gồm ít nhất 6 sản phẩm.</li>
-        <li>Câu 3: Tạo mảng mới chỉ chứa name và price của mỗi sản phẩm.</li>
-        <li>Câu 4: Lọc ra các sản phẩm còn hàng trong kho (quantity > 0).</li>
-        <li>Câu 5: Kiểm tra xem có ít nhất một sản phẩm có giá trên 30.000.000 hay không.</li>
-        <li>Câu 6: Kiểm tra xem tất cả sản phẩm thuộc danh mục "Accessories" có đang được bán hay không.</li>
-        <li>Câu 7: Tính tổng giá trị kho hàng (price × quantity).</li>
-        <li>Câu 8: Dùng for...of duyệt mảng products và in ra thông tin sản phẩm.</li>
-        <li>Câu 9: Dùng for...in để in ra tên thuộc tính và giá trị tương ứng.</li>
-        <li>Câu 10: Lấy danh sách tên các sản phẩm đang bán và còn hàng.</li>
-    </ol>
-    <p>Mở công cụ console (F12) để xem kết quả.</p>
-    <script>
-        // Câu 1: Khai báo constructor function Product
-        function Product(id, name, price, quantity, category, isAvailable) {
-            this.id = id;
-            this.name = name;
-            this.price = price;
-            this.quantity = quantity;
-            this.category = category;
-            this.isAvailable = isAvailable;
-        }
 
-        // Câu 2: Khởi tạo mảng products với ít nhất 6 sản phẩm
-        const products = [
-            new Product(1, "Laptop", 20000000, 10, "Electronics", true),
-            new Product(2, "Phone", 15000000, 0, "Electronics", false),
-            new Product(3, "Keyboard", 500000, 50, "Accessories", true),
-            new Product(4, "Mouse", 300000, 0, "Accessories", false),
-            new Product(5, "Monitor", 7000000, 20, "Electronics", true),
-            new Product(6, "Headphones", 2000000, 15, "Accessories", true),
-        ];
+<h1>Danh sách câu hỏi</h1>
+<ol>
+    <li>Câu 1: Khai báo constructor function Product để tạo đối tượng sản phẩm.</li>
+    <li>Câu 2: Khởi tạo mảng products gồm ít nhất 6 sản phẩm.</li>
+    <li>Câu 3: Tạo mảng mới chỉ chứa name và price của mỗi sản phẩm.</li>
+    <li>Câu 4: Lọc ra các sản phẩm còn hàng trong kho (quantity > 0).</li>
+    <li>Câu 5: Kiểm tra xem có ít nhất một sản phẩm có giá trên 30.000.000 hay không.</li>
+    <li>Câu 6: Kiểm tra xem tất cả sản phẩm thuộc danh mục "Accessories" có đang được bán hay không.</li>
+    <li>Câu 7: Tính tổng giá trị kho hàng (price × quantity).</li>
+    <li>Câu 8: Dùng for...of duyệt mảng products và in ra thông tin sản phẩm.</li>
+    <li>Câu 9: Dùng for...in để in ra tên thuộc tính và giá trị tương ứng.</li>
+    <li>Câu 10: Lấy danh sách tên các sản phẩm đang bán và còn hàng.</li>
+</ol>
 
-        console.log("Câu 3: Tạo mảng mới chỉ chứa name và price của mỗi sản phẩm");
-        const nameAndPrice = products.map(product => ({
-            name: product.name,
-            price: product.price
-        }));
-        console.log(nameAndPrice);
+<p><strong>Mở Console (F12 → Console) để xem kết quả</strong></p>
 
-        console.log("Câu 4: Lọc ra các sản phẩm còn hàng trong kho (quantity > 0)");
-        const inStockProducts = products.filter(product => product.quantity > 0);
-        console.log(inStockProducts);
-
-        console.log("Câu 5: Kiểm tra xem có ít nhất một sản phẩm có giá trên 30.000.000 hay không");
-        const hasExpensiveProduct = products.some(product => product.price > 30000000);
-        console.log(hasExpensiveProduct);
-        console.log("Câu 6: Kiểm tra xem tất cả sản phẩm thuộc danh mục 'Accessories' có đang được bán hay không");
-        const allAccessoriesAvailable = products
-            .filter(product => product.category === "Accessories")
-            .every(product => product.isAvailable);
-        console.log(allAccessoriesAvailable);
-
-        console.log("Câu 7: Tính tổng giá trị kho hàng (price × quantity)");
-        const totalInventoryValue = products.reduce((total, product) => total + product.price * product.quantity, 0);
-        console.log(totalInventoryValue);
-
-        console.log("Câu 8: Dùng for...of duyệt mảng products và in ra thông tin sản phẩm");
-        for (const product of products) {
-            console.log(`${product.name} - ${product.category} - ${product.isAvailable ? "Đang bán" : "Ngừng bán"}`);
-        }
-
-        console.log("Câu 9: Dùng for...in để in ra tên thuộc tính và giá trị tương ứng");
-        for (const product of products) {
-            for (const key in product) {
-                console.log(`${key}: ${product[key]}`);
-            }
-            console.log("----------");
-        }
-
-        console.log("Câu 10: Lấy danh sách tên các sản phẩm đang bán và còn hàng");
-        const availableAndInStock = products
-            .filter(product => product.isAvailable && product.quantity > 0)
-            .map(product => product.name);
-        console.log(availableAndInStock);
-    </script>
+<!-- Link JS -->
 <script src="script.js"></script>
 </body>
 </html>
